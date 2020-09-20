@@ -233,6 +233,7 @@ investors_sell_gain <- investors_sell_gain %>%
 # Calculate proportion of buying following gain in IBEX35
 correlated_buy_gain <- investors_correlated %>%
   filter(daily_position_change > 0, ibex_percent_change > 0) %>%
+  distinct(investor_id, date, .keep_all = TRUE) %>%
   group_by(investor_id) %>%
   summarize(buy_gain = n())
 correlated_buy_gain <- correlated_buy_gain %>%
@@ -244,6 +245,7 @@ correlated_buy_gain <- correlated_buy_gain %>%
 # Calculate proportion of selling following drop in IBEX35
 correlated_sell_loss <- investors_correlated %>%
   filter(daily_position_change < 0, ibex_percent_change < 0) %>%
+  distinct(investor_id, date, .keep_all = TRUE) %>%
   group_by(investor_id) %>%
   summarize(sell_loss = n())
 correlated_sell_loss <- correlated_sell_loss %>%
@@ -255,6 +257,7 @@ correlated_sell_loss <- correlated_sell_loss %>%
 # Calculate proportion of buying following drop in IBEX35
 correlated_buy_loss <- investors_correlated %>%
   filter(daily_position_change > 0, ibex_percent_change < 0) %>%
+  distinct(investor_id, date, .keep_all = TRUE) %>%
   group_by(investor_id) %>%
   summarize(buy_loss = n())
 correlated_buy_loss <- correlated_buy_loss %>%
@@ -266,6 +269,7 @@ correlated_buy_loss <- correlated_buy_loss %>%
 # Calculate proportion of selling following gain in IBEX35
 correlated_sell_gain <- investors_correlated %>%
   filter(daily_position_change < 0, ibex_percent_change > 0) %>%
+  distinct(investor_id, date, .keep_all = TRUE) %>%
   group_by(investor_id) %>%
   summarize(sell_gain = n())
 correlated_sell_gain <- correlated_sell_gain %>%
@@ -279,6 +283,7 @@ correlated_sell_gain <- correlated_sell_gain %>%
 # Calculate proportion of buying following gain in IBEX35
 uncorrelated_buy_gain <- investors_uncorrelated %>%
   filter(daily_position_change > 0, ibex_percent_change > 0) %>%
+  distinct(investor_id, date, .keep_all = TRUE) %>%
   group_by(investor_id) %>%
   summarize(buy_gain = n())
 uncorrelated_buy_gain <- uncorrelated_buy_gain %>%
@@ -290,6 +295,7 @@ uncorrelated_buy_gain <- uncorrelated_buy_gain %>%
 # Calculate proportion of selling following drop in IBEX35
 uncorrelated_sell_loss <- investors_uncorrelated %>%
   filter(daily_position_change < 0, ibex_percent_change < 0) %>%
+  distinct(investor_id, date, .keep_all = TRUE) %>%
   group_by(investor_id) %>%
   summarize(sell_loss = n())
 uncorrelated_sell_loss <- uncorrelated_sell_loss %>%
@@ -301,6 +307,7 @@ uncorrelated_sell_loss <- uncorrelated_sell_loss %>%
 # Calculate proportion of buying following drop in IBEX35
 uncorrelated_buy_loss <- investors_uncorrelated %>%
   filter(daily_position_change > 0, ibex_percent_change < 0) %>%
+  distinct(investor_id, date, .keep_all = TRUE) %>%
   group_by(investor_id) %>%
   summarize(buy_loss = n())
 uncorrelated_buy_loss <- uncorrelated_buy_loss %>%
@@ -312,6 +319,7 @@ uncorrelated_buy_loss <- uncorrelated_buy_loss %>%
 # Calculate proportion of selling following gain in IBEX35
 uncorrelated_sell_gain <- investors_uncorrelated %>%
   filter(daily_position_change < 0, ibex_percent_change > 0) %>%
+  distinct(investor_id, date, .keep_all = TRUE) %>%
   group_by(investor_id) %>%
   summarize(sell_gain = n())
 uncorrelated_sell_gain <- uncorrelated_sell_gain %>%
